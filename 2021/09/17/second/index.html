@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>一个服务器、一个域名、一个docker、一个nginx、两个jar包、两个端口（玩转二级域名） | Program W</title><meta name="keywords" content="docker,nginx,建站"><meta name="author" content="Program W"><meta name="copyright" content="Program W"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="玩转部署">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个服务器、一个域名、一个docker、一个nginx、两个jar包、两个端口（玩转二级域名）">
+<meta property="og:url" content="https://lwstudy.github.io/2021/09/17/second/index.html">
+<meta property="og:site_name" content="Program W">
+<meta property="og:description" content="玩转部署">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2021/12/10/HtRPG67UmKXFYx9.jpg">
+<meta property="article:published_time" content="2021-09-17T01:40:01.000Z">
+<meta property="article:modified_time" content="2021-12-13T03:20:41.658Z">
+<meta property="article:author" content="Program W">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="nginx">
+<meta property="article:tag" content="建站">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2021/12/10/HtRPG67UmKXFYx9.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lwstudy.github.io/2021/09/17/second/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Program W","link":"链接: ","source":"来源: Program W","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '一个服务器、一个域名、一个docker、一个nginx、两个jar包、两个端口（玩转二级域名）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-12-13 11:20:41'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/spider.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 其他</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> One Piece</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2021/12/10/HtRPG67UmKXFYx9.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Program W</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 其他</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> One Piece</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">一个服务器、一个域名、一个docker、一个nginx、两个jar包、两个端口（玩转二级域名）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-09-17T01:40:01.000Z" title="发表于 2021-09-17 09:40:01">2021-09-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-12-13T03:20:41.658Z" title="更新于 2021-12-13 11:20:41">2021-12-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/nginx/">nginx</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/nginx/docker/">docker</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="一个服务器、一个域名、一个docker、一个nginx、两个jar包、两个端口（玩转二级域名）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="一、首先可以顺手学一手（docker）"><a href="#一、首先可以顺手学一手（docker）" class="headerlink" title="一、首先可以顺手学一手（docker）"></a>一、首先可以顺手学一手（docker）</h1><blockquote>
+<p>其实我刚开始还懒得学，但是nginx玩崩了┭┮﹏┭┮。所以只能去玩docker了。两三个小时跟着开搞docker，再自己查查二级的知识就很简单<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/q610376681/article/details/90483576?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522163166023416780264026260%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=163166023416780264026260&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-2-90483576.first_rank_v2_pc_rank_v29&utm_term=docker&spm=1018.2226.3001.4187">docker入门(利用docker部署web应用)</a><br><a target="_blank" rel="noopener" href="https://www.jb51.net/article/161580.htm">CentOS 7.5下 安装Docker 教程 详解</a>==嗯~我就是用这个起手==（跟着敲的时候，这里换容器<code>nginx-test</code>转<code>nginx-web</code>的时候记得<code>docker stop nginx-test</code>把前面的容器关掉，不然占用了80端口）</p>
+</blockquote>
+<h1 id="二、nginx配置反向代理"><a href="#二、nginx配置反向代理" class="headerlink" title="二、nginx配置反向代理"></a>二、nginx配置反向代理</h1><blockquote>
+<p><code>nginx</code>能配置很多东西，这里就用的server配置反向代理</p>
+</blockquote>
+<p>==不说多的，就先把二级代理放在这里==</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">       listen 80;</span><br><span class="line">       charset utf-8;</span><br><span class="line">       server_name www.programboy.top;</span><br><span class="line"></span><br><span class="line">       location / &#123;</span><br><span class="line">          proxy_pass http://www.programboy.top:8080;</span><br><span class="line">          proxy_redirect default;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    server&#123;</span><br><span class="line">       listen 80;</span><br><span class="line">       charset utf-8;</span><br><span class="line">       server_name blog.programboy.top;</span><br><span class="line"></span><br><span class="line">       location / &#123;</span><br><span class="line">          proxy_pass http://blog.programboy.top:8001;</span><br><span class="line">          proxy_redirect default;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="三、启动两个不同端口的springboot项目的jar包"><a href="#三、启动两个不同端口的springboot项目的jar包" class="headerlink" title="三、启动两个不同端口的springboot项目的jar包"></a>三、启动两个不同端口的springboot项目的jar包</h1><blockquote>
+<p>记得nohup持续启动（这是我的两个项目的jar包）<br>nohup java -jar door.jar &amp;<br>nohup java -jar myblog.jar &amp;</p>
+</blockquote>
+<h1 id="四、看看启动的端口"><a href="#四、看看启动的端口" class="headerlink" title="四、看看启动的端口"></a>四、看看启动的端口</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -ntlp   //查看当前所有tcp端口·</span><br></pre></td></tr></table></figure>
+<h1 id="五、云服务器开启端口"><a href="#五、云服务器开启端口" class="headerlink" title="五、云服务器开启端口"></a>五、云服务器开启端口</h1><blockquote>
+<p>==可能一般到这时候就会急着去尝试着访问下自己的地址了（有点小激动）==</p>
+</blockquote>
+<ul>
+<li><p>云服务器的端口开放就不说了。</p>
+<h1 id="六、linux下还得开firewall（可惜，还有点操作）"><a href="#六、linux下还得开firewall（可惜，还有点操作）" class="headerlink" title="六、linux下还得开firewall（可惜，还有点操作）"></a>六、linux下还得开firewall（可惜，还有点操作）</h1></li>
+<li><p>==查看下防火墙是否开启==</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status firewalld	</span><br></pre></td></tr></table></figure>
+<p>==绿色的active就是打开了==</p>
+</li>
+<li><p>==开启防火墙以及开机自启==</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start firewalld</span><br><span class="line">systemctl <span class="built_in">enable</span> firewalld</span><br></pre></td></tr></table></figure></li>
+<li><p>开发端口：比如<code>8001</code>==</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=8001/tcp --permanent</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>[root@VM-8-16-centos conf]# firewall-cmd –zone=public –add-port=8001/tcp –permanent<br>success</p>
+</blockquote>
+<ul>
+<li>==看到<code>success</code>以为好了，结果还有载入才能生效==</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<ul>
+<li>==最后看下开放的端口==</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone=public --list-ports</span><br></pre></td></tr></table></figure>
+<h1 id="七、最后！记得二级域名就是这个解析前缀。"><a href="#七、最后！记得二级域名就是这个解析前缀。" class="headerlink" title="七、最后！记得二级域名就是这个解析前缀。"></a>七、最后！记得二级域名就是这个解析前缀。</h1><p><img src="https://img-blog.csdnimg.cn/760ea51542b84805b007e5fffc246748.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAUHJvZ3JhbSBX,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h1 id="八、最最后了-嘿嘿-o-！开始访问！"><a href="#八、最最后了-嘿嘿-o-！开始访问！" class="headerlink" title="八、最最后了!嘿嘿(^o^)/~！开始访问！"></a>八、最最后了!嘿嘿(^o^)/~！开始访问！</h1><p><a target="_blank" rel="noopener" href="http://www.programboy.top/index">一个毕业设计时候做的游戏社区</a><br><a target="_blank" rel="noopener" href="http://blog.programboy.top/index">一个简易的群体博客平台</a><br><a target="_blank" rel="noopener" href="https://lwstudy.gitee.io/">myhexo博客</a>—还在弄，边做边学（<a target="_blank" rel="noopener" href="https://imlql.cn/post/bb283ed3.html">Hexo搭建博客-butterfly主题新版教程</a>====<a target="_blank" rel="noopener" href="https://butterfly.js.org/posts/21cfbf15/">Butterfly文档，最好不用npm安装，不好跟后面操作<code>themes</code>文件夹</a>）。</p>
+<p>==<strong>最后！</strong>，了解一下纯前端的比如hexo做的博客，可以通过git的<a target="_blank" rel="noopener" href="https://gitee.com/lwstudy/lwstudy">仓库存前端博客hexo地址</a>，通过Gitee Pages，不需要自己弄服务器，域名。只要身份认证就可以将项目弄一个简单的外网访问的地址喽！==<br><img src="https://img-blog.csdnimg.cn/6012f06d035f418da2044ae8ad1a3f71.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAUHJvZ3JhbSBX,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>==注意这里服务的是静态网站，就只用前端做的，就一个index.html的==<br><img src="https://img-blog.csdnimg.cn/077987539e494d9496a6f352135cc51f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAUHJvZ3JhbSBX,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Program W</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://lwstudy.github.io/2021/09/17/second/">https://lwstudy.github.io/2021/09/17/second/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://lwstudy.github.io" target="_blank">Program W</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/docker/">docker</a><a class="post-meta__tags" href="/tags/nginx/">nginx</a><a class="post-meta__tags" href="/tags/%E5%BB%BA%E7%AB%99/">建站</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2021/12/10/HtRPG67UmKXFYx9.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2021/09/17/test/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/youthlql/lqlp@v1.0.0/computer_network/logo.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">copy测试</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/spider.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Program W</div><div class="author-info__description">这是一次开始</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lwstudy"><i class="fab fa-github"></i><span>GiHub</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://gitee.com/lwstudy" target="_blank" title="Gitee"><i class="fab fa-guilded"></i></a><a class="social-icon" href="https://blog.csdn.net/weixin_46037781" target="_blank" title="CSDN"><i class="fas fa-copyright"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">我们总得留下些什么吧</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%A6%96%E5%85%88%E5%8F%AF%E4%BB%A5%E9%A1%BA%E6%89%8B%E5%AD%A6%E4%B8%80%E6%89%8B%EF%BC%88docker%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">一、首先可以顺手学一手（docker）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81nginx%E9%85%8D%E7%BD%AE%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">二、nginx配置反向代理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%90%AF%E5%8A%A8%E4%B8%A4%E4%B8%AA%E4%B8%8D%E5%90%8C%E7%AB%AF%E5%8F%A3%E7%9A%84springboot%E9%A1%B9%E7%9B%AE%E7%9A%84jar%E5%8C%85"><span class="toc-number">3.</span> <span class="toc-text">三、启动两个不同端口的springboot项目的jar包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%9C%8B%E7%9C%8B%E5%90%AF%E5%8A%A8%E7%9A%84%E7%AB%AF%E5%8F%A3"><span class="toc-number">4.</span> <span class="toc-text">四、看看启动的端口</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%90%AF%E7%AB%AF%E5%8F%A3"><span class="toc-number">5.</span> <span class="toc-text">五、云服务器开启端口</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81linux%E4%B8%8B%E8%BF%98%E5%BE%97%E5%BC%80firewall%EF%BC%88%E5%8F%AF%E6%83%9C%EF%BC%8C%E8%BF%98%E6%9C%89%E7%82%B9%E6%93%8D%E4%BD%9C%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">六、linux下还得开firewall（可惜，还有点操作）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%9C%80%E5%90%8E%EF%BC%81%E8%AE%B0%E5%BE%97%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%B0%B1%E6%98%AF%E8%BF%99%E4%B8%AA%E8%A7%A3%E6%9E%90%E5%89%8D%E7%BC%80%E3%80%82"><span class="toc-number">7.</span> <span class="toc-text">七、最后！记得二级域名就是这个解析前缀。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E6%9C%80%E6%9C%80%E5%90%8E%E4%BA%86-%E5%98%BF%E5%98%BF-o-%EF%BC%81%E5%BC%80%E5%A7%8B%E8%AE%BF%E9%97%AE%EF%BC%81"><span class="toc-number">8.</span> <span class="toc-text">八、最最后了!嘿嘿(^o^)&#x2F;~！开始访问！</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/06/hello-world/" title="Hello World"><img src="/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2022/04/06/hello-world/" title="Hello World">Hello World</a><time datetime="2022-04-06T10:30:08.030Z" title="发表于 2022-04-06 18:30:08">2022-04-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/02/04/spring-security/" title="基于SpringSecurity的UsernamePasswordAuthenticationFilter实现默认/login接口（不写controller中的/login）登录"><img src="https://s2.loli.net/2022/02/11/8eibtvjfxr5BTz1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于SpringSecurity的UsernamePasswordAuthenticationFilter实现默认/login接口（不写controller中的/login）登录"/></a><div class="content"><a class="title" href="/2022/02/04/spring-security/" title="基于SpringSecurity的UsernamePasswordAuthenticationFilter实现默认/login接口（不写controller中的/login）登录">基于SpringSecurity的UsernamePasswordAuthenticationFilter实现默认/login接口（不写controller中的/login）登录</a><time datetime="2022-02-04T02:10:06.000Z" title="发表于 2022-02-04 10:10:06">2022-02-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/28/sso/" title="基于Spring Security+RSA+Redis的SSO的单点登录"><img src="https://s2.loli.net/2022/02/11/nNXos3uaJIApdrP.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于Spring Security+RSA+Redis的SSO的单点登录"/></a><div class="content"><a class="title" href="/2022/01/28/sso/" title="基于Spring Security+RSA+Redis的SSO的单点登录">基于Spring Security+RSA+Redis的SSO的单点登录</a><time datetime="2022-01-28T03:11:46.000Z" title="发表于 2022-01-28 11:11:46">2022-01-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/26/unify/" title="简单的返回信息结果封装+统一异常处理"><img src="https://s2.loli.net/2022/02/11/9NogiAFCS76ElMQ.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="简单的返回信息结果封装+统一异常处理"/></a><div class="content"><a class="title" href="/2022/01/26/unify/" title="简单的返回信息结果封装+统一异常处理">简单的返回信息结果封装+统一异常处理</a><time datetime="2022-01-26T08:39:46.000Z" title="发表于 2022-01-26 16:39:46">2022-01-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/25/mybatis-genarate/" title="Mybatis Generator代码生成器成功记录"><img src="https://s2.loli.net/2022/02/11/3pXIShAnkLvs45g.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mybatis Generator代码生成器成功记录"/></a><div class="content"><a class="title" href="/2022/01/25/mybatis-genarate/" title="Mybatis Generator代码生成器成功记录">Mybatis Generator代码生成器成功记录</a><time datetime="2022-01-25T06:59:46.000Z" title="发表于 2022-01-25 14:59:46">2022-01-25</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2021/12/10/HtRPG67UmKXFYx9.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Program W</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">这里是底部了.请停止下降!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'zCYkwMBcHhcNvvPzdsooSPb1-gzGzoHsz',
+      appKey: 'MxW3eBpKYaCGdvUxno6EkFuH',
+      placeholder: '请留下你的足迹...',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
